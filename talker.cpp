@@ -385,10 +385,10 @@ public:
     cv::waitKey(3);
     */
   
-    const char * model_file = "model/bt_rgbd_RF.txt";
-    const char*  rgb_image_file = "test_files/rgb_image_list.txt";
-    const char*  depth_image_file = "test_files/depth_image_list.txt";
-    const char*  camera_to_wld_pose_file = "test_files/camera_pose_list.txt";
+    const char * model_file = "/home/ial/segbot_nav_ws/devel/lib/camera_relocalization/model/bt_rgbd_RF.txt";
+   // const char*  rgb_image_file = "/home/ial/segbot_nav_ws/devel/lib/camera_relocalization/test_data/rgb_image_list.txt";
+   // const char*  depth_image_file = "/home/ial/segbot_nav_ws/devel/lib/camera_relocalization/test_data/depth_image_list.txt";
+   // const char*  camera_to_wld_pose_file = "/home/ial/segbot_nav_ws/devel/lib/camera_relocalization/test_data/camera_pose_list.txt";
     const int num_random_sample = 5000;
     const int max_check = 8;
     const char* dataset_param_filename = "4scenes_param.txt";
@@ -402,7 +402,8 @@ public:
     cv::Mat rgb_img= rgbImgPtr->image;
     cv::Mat depth_img= depthImgPtr->image; 
     
-   
+    assert(depth_img.type() == CV_32FC1);
+    depth_img.convertTo(depth_img, CV_64F);
   
     assert(num_random_sample > 100);
     
