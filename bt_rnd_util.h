@@ -231,6 +231,12 @@ public:
                                   const int single_channel_dim,
                                   const bool verbose);
     
+    static void
+    extractWHFeatureFromRgbImages(cv::Mat rgb_img,
+                                  vector<SCRFRandomFeature> & features,  // output
+                                  const int single_channel_dim,
+                                  const bool verbose);
+    
     // Depth adatpvie Walsh Hadamard feature
     // The original image is resized to make the image feature is scale insensitive
     // sample: must provide depth (meter) in the camera coordinate
