@@ -2,7 +2,7 @@
 //  bt_rnd_util.h
 //  RGBD_RF
 //
-//  Created by Lili on 2017-01-19.
+//  Created by jimmy on 2017-01-19.
 //  Copyright (c) 2017 Nowhere Planet. All rights reserved.
 //
 
