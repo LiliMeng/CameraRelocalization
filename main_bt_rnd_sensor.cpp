@@ -25,38 +25,7 @@ using std::string;
 
 #if 1
 
-cv::Mat validCameraDepth(const cv::Mat & camera_depth_img,
-                         const double depth_factor,
-                          const double min_depth,
-                          const double max_depth,
-                          cv::Mat & mask)
-{
-    assert(camera_depth_img.type() == CV_64FC1);
-    assert(min_depth < max_depth);
-    assert(min_depth >= 0.0);
-    
-    const int width  = camera_depth_img.cols;
-    const int height = camera_depth_img.rows;
-  
-    cv::Mat loc_img = cv::Mat::zeros(3, 1, CV_64F);
-    mask = cv::Mat::ones(height, width, CV_8UC1);
-        for (int r = 0; r < height; r++) {
-        for (int c = 0; c < width; c++) {
-            double camera_depth = camera_depth_img.at<double>(r, c)/depth_factor; // to meter
-            if (camera_depth < min_depth || camera_depth > max_depth ) {
-                // invalid depth
-                //printf("invalid depth %lf\n", camera_depth);
-                mask.at<unsigned char>(r, c) = 0;
-                continue;
-            }
-            loc_img.at<double>(0, 0) = c;
-            loc_img.at<double>(1, 0) = r;
-            loc_img.at<double>(2, 0) = 1.0;
-        }
-    }
-    return loc_img;
-    
-}
+
 
 int main(int argc, const char * argv[])
 {
