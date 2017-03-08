@@ -3,7 +3,7 @@
 //  LoopClosure
 //
 //  Created by Lili on 2017-02-16.
-//  Copyright © 2016 jimmy. All rights reserved.
+//  Copyright © 2016 Lili. All rights reserved.
 //
 
 #include <iostream>
