@@ -170,6 +170,30 @@ BTRNDUtil::extractWHFeatureFromRgbImages(const char * rgb_img_file,
 }
 
 void
+BTRNDUtil::extractWHFeatureFromRgbImages(cv::Mat rgb_img,
+                                         vector<SCRFRandomFeature> & features,
+                                         const int single_channel_dim,
+                                         const bool verbose)
+{
+    vector<cv::Point2d> locations;
+    for (int i =0; i<features.size(); i++) {
+        double x = features[i].p2d_[0];
+        double y = features[i].p2d_[1];
+        locations.push_back(cv::Point2d(x, y));
+    }
+
+    vector<Eigen::VectorXf> local_features;
+    CvxWalshHadamard::generateWHFeatureWithoutFirstPattern(rgb_img, locations, 64, single_channel_dim, local_features);
+    
+    assert(local_features.size() == locations.size());
+    
+    for (int i = 0; i<features.size(); i++) {
+        features[i].x_descriptor_ = local_features[i]/local_features[i].norm();
+    }
+}
+
+
+void
 BTRNDUtil::extractDepthAdaptiveWHFeatureFromRgbImages(const char * rgb_img_file,
                                                      vector<SCRFRandomFeature> & samples,
                                                      const int single_channel_dim,
