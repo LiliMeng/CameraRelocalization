@@ -2,7 +2,7 @@
 //  main.cpp
 //  LoopClosure
 //
-//  Created by jimmy on 2016-02-16.
+//  Created by Lili on 2017-02-16.
 //  Copyright © 2016 jimmy. All rights reserved.
 //
 
